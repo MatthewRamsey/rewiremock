@@ -8,7 +8,7 @@ The most powerful mocking library, inspired by the best libraries:
 - [mock-require](https://github.com/boblauer/mock-require) - Things must not be complex, Rewiremock __is__ not.
 - [jest.mocks](https://facebook.github.io/jest/docs/en/manual-mocks.html) - Jest is awesome. But rewiremock can do the same.
 
-Rewiremock __is a your favorite library__. The better version of it. For mocha, ava, karma, and anything not-jest.
+Rewiremock __is your favorite library__. The better version of it. For mocha, ava, karma, and anything not-jest.
 
 ```text
                      /$$      /$$ /$$                     /$$      /$$                     /$$      
@@ -21,7 +21,7 @@ Rewiremock __is a your favorite library__. The better version of it. For mocha, 
 |__/       \_______/|__/     \__/|__/|__/       \_______/|__/     |__/ \______/  \_______/|__/  \__/
 ```
 
-By its nature rewiremock has same behavior as Mockery. But it can behave like others too.
+By its nature, rewiremock has same behavior as Mockery. But it can behave like others too.
 It covers _any_ case. It is the right way to mock your dependencies or perform dependency injection.
  
 # Goal:
@@ -29,7 +29,7 @@ It covers _any_ case. It is the right way to mock your dependencies or perform d
 - give ability to do correctly - isolation, typechecking, powerfull API
 - give ability to do it easy - simple API to cover all the cases.
 
-I have wrote some articles about these ideas - https://medium.com/tag/rewiremock/latest
+I have written some articles about these ideas - https://medium.com/tag/rewiremock/latest
 
 # API
  
@@ -74,7 +74,7 @@ I have wrote some articles about these ideas - https://medium.com/tag/rewiremock
 ```
 
 # Which API to use?
-Yep - there is 4 top level ways to activate a mock - inScope, around, proxy or just enable.
+Yep - there are 4 top level ways to activate a mock - inScope, around, proxy or just enable.
 
 ### 2 different APIs
  - (jest) one could mock everything, but requires babel plugin. And there is one way to use it. Refer to Hoisted mocking.
@@ -82,13 +82,13 @@ Yep - there is 4 top level ways to activate a mock - inScope, around, proxy or j
 
 ### A common way to mock.
 Rewiremock provides lots of APIs to help you setup mock, and get the mocked module.  
-  - If everything is simply - use __rewiremock.proxy__. (~proxyquire)
+  - If everything is simple - use __rewiremock.proxy__. (~proxyquire)
   - If you have issues with name resolve - use __rewiremock.module__ and resolve names by yourself.
   - If you need scope isolation - use __rewiremock.around__, or inScope.
-  - If you advanced syntax and type checking - use __rewiremock.around__.
+  - If you have advanced syntax and type checking - use __rewiremock.around__.
   - You always can just use __.enable/.disable__ (~ mockery).
   
-> All the mocks await you to provide "stubs" to override the real implimentation.
+> All the mocks await you to provide "stubs" to override the real implementation.
 > If you want just to ensure you have called endpoints – use rewiremock('someFile').mockThrough.    
 
 # Usage
@@ -155,7 +155,7 @@ selectors.findUser.returns("cat"); // this is sinon stub.
 As result Component1 will be replaced by Component2, action with empty function and 
 all selectors by sinon stubs, with one configured.
 
-This is only possible via babel plugin, and without it this code will be executed without any sence, as long mocking
+This is only possible via babel plugin, and without it this code will be executed without any sense, as long mocking
 will be configured after the files required.
 
 1. Add `rewiremock/babel' into plugin section in `.babelrc`
@@ -252,9 +252,9 @@ rewiremock.around(
   }
 );
 ```
-If default export is not exists on module 'b', or there is no named export testB, or types do not match - type system will throw.
+If default export does not exist on module 'b', or there is no named export testB, or types do not match - type system will throw.
 
-If you will declare an async mock, you it will not be resolved by the time of execution - Rewiremock will throw on Error.
+If you will declare an async mock, it will not be resolved by the time of execution - Rewiremock will throw on Error.
 
 If you have async imports inside mocked file, follow this syntax
 ```js
@@ -331,9 +331,9 @@ Currently there are 2 known problems, both for mocha+webpack, ie using nodejs to
   Caused by babel. Just dont use babel then running webpack bundles. Use babel them creating bundled.
 - TypeError: Cannot read property 'call' of undefined 
 
-  Caused by webpack. Sometimes is does not include some important files.
+  Caused by webpack. Sometimes it does not include some important files.
   To solve this problem just `import('rewiremock/webpack/interceptor')` in scaffolding.
-  The problem is simply - this file does not exists in the bundle.  
+  The problem is simple - this file does not exists in the bundle.  
 
    
 ## To actually... mock   
@@ -384,7 +384,7 @@ First - define your mocks. You can do it in any place, this is just a setup.
 ```   
    
 # Running
- There is a simply way to do it: Just enable it, and dont forget to disable it later.
+ There is a simple way to do it: Just enable it, and dont forget to disable it later.
  ```javascript
   //in mocha tests
   beforeEach( () => rewiremock.enable() );
@@ -478,7 +478,7 @@ rewiremock.proxy('somemodule', {
 
 # Plugins
  By default - rewiremock has limited features. You can extend its behavior via plugins.
- - relative. A bit simply, proxyquire-like behavior. Will override only first level deps, and will wipe a lot of modules from a cache.
+ - relative. A bit simple, proxyquire-like behavior. Will override only first level deps, and will wipe a lot of modules from a cache.
  - nodejs. Common support to `usual` node.js application. Will absolutize all paths. Will wipe cache very accurately. 
  - webpack-alias. Enabled you to use webpack aliases as module names.
  - childOnly. Only first level dependencies will be mocked. 
@@ -495,13 +495,13 @@ rewiremock.proxy('somemodule', {
  ``` 
 
 # Nested declarations
- If you import rewiremock from other place, for example to add some defaults mocks - it will not gonna work.
- Each instance of rewiremock in independent.
+ If you import rewiremock from other place, for example to add some defaults mocks - it will not work.
+ Each instance of rewiremock is independent.
  You have to pass your instance of rewiremock to build a library.
- PS: note, rewiremock did have nested API, but it were removed.
+ PS: note, rewiremock did have nested API, but it was removed.
   
 # Isolation
- Unit testing requires all decencies to be mocked. All!
+ Unit testing requires all dependencies to be mocked. All!
  To enable it, run
  ```javascript
   rewiremock.isolation();
@@ -524,11 +524,11 @@ rewiremock.proxy('somemodule', {
  
  
  # Reverse isolation
-  Sometimes you have to be sure, that you mock is actually was called.
-  Isolation will protect you then you add new dependencies, `.toBeUsed` protect you from removal.
+  Sometimes you have to be sure, that your mock is actually called.
+  Isolation will protect you, then you add new dependencies, `.toBeUsed` protect you from removal.
  
  # Jest
- Jest is a very popular testing framework, but it has one issue - is already contain mocking support.
+ Jest is a very popular testing framework, but it has one issue - is already contains mocking support.
  
  > Do not use rewiremock and jest. Even if it is possible.
  
@@ -548,7 +548,7 @@ rewiremock.proxy('somemodule', {
  
  !!! the last line here may disable Jest sandboxing. !!! 
  
- Also it will disable Jest transformation, killing all the jest magics.
+ Also it will disable Jest transformation, killing all the jest magic.
  
  To be able continue use ES6/imports - you have to enforce Babel to be applied in the `common` way.
  ```js
@@ -631,9 +631,9 @@ Default cache policy follow these steps:
 2. Finalization
 - repeat all mocks, and possible "soiled" by mocks files.
 - copy over the old cache.
-- or restore the old cache complitely if `forceCacheClear` mode is set.
+- or restore the old cache completely if `forceCacheClear` mode is set.
 
-The last variant is default for proxyquire and mockery, also it is more `sequre` from different side effects.
+The last variant is default for proxyquire and mockery, also it is more `secure` from different side effects.
 Regardless, default is the first variant - as a way faster, and secure enough. 
 
 As result of this mocking strategy you can mock any file at any level, while keeping another files cached.
